@@ -13,6 +13,8 @@ import { MonacoEditorModule } from 'ngx-monaco-editor';
 
 // routes
 import { appRoutes } from './app.route';
+import * as PDFJS from "pdfjs-dist";
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
   declarations: [
@@ -20,15 +22,20 @@ import { appRoutes } from './app.route';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    CompareEditorComponent
+    CompareEditorComponent,
+    
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    PdfViewerModule,
     MonacoEditorModule.forRoot(),
     RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' })
   ],
   providers: [],
+  exports:[
+    PdfViewerModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -16,7 +16,9 @@
       "es2017",
       "dom"
     ],
+   
+    "types": ["node"],
     "module": "es2020",
     "baseUrl": "./"
-  }
+  },
 }

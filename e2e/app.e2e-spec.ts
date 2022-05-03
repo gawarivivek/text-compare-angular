@@ -9,6 +9,6 @@ describe('text-compare-angular App', () => {
 
   it('should display text compare title', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Text Compare');
+    expect(page.getParagraphText()).toEqual('AllScripts Compare tool');
   });
 });

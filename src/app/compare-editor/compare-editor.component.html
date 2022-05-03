@@ -1,10 +1,9 @@
 <div class="container-fluid container-diff">
-  <div class="text-center">
-    <h1>Text Compare</h1>
-    <p>
-      Built with <a href="https://angular.io/">Angular</a> and
-      <a href="https://microsoft.github.io/monaco-editor/index.html"
-        >Monaco Editor</a
+    <div class="text-center">
+        <h1>AllScripts Compare tool</h1>
+        <p>
+            Built with <a href="https://angular.io/">Angular</a> and
+            <a href="https://microsoft.github.io/monaco-editor/index.html">Monaco Editor</a
       >
     </p>
   </div>
@@ -68,6 +67,52 @@
       ></ngx-monaco-diff-editor>
     </div>
   </div>
+
+  <!-- <div class="row"> -->
+  <!-- //omnamhshiway -->
+  <div class="row">
+  <div class="col">
+    <label>First</label>
+    <div class="row choose">
+        <div class="input-group">
+            <input type="file" class="form-control" id="file1" aria-describedby="inputGroupFileAddon04" aria-label="Upload"
+             (change)="onFileSelected1()">
+
+        </div>
+    </div>
+
+    <div class="test" style='position: relative; '>
+
+        <pdf-viewer [src]='pdfSrc' [show-all]="true" [autoresize]="true" [original-size]='true' [fit-to-page]='true'
+         [render-text]='false' (page-rendered)="pageRendered1($event)"></pdf-viewer>
+    </div>
+    <!-- <div class="test">
+        <pdf-viewer [src]="pdfSrc" [render-text]="true" style="width: 70px; height: 90px;"
+            [fit-to-page]='true'></pdf-viewer>
+    </div> -->
+
+</div>
+  <!-- //omnamhshiway -->
+ <div class="col">
+<label>second</label>
+    <div class="row choose">
+        <div class="input-group">
+            <input type="file" class="form-control" id="file2" aria-describedby="inputGroupFileAddon04" aria-label="Upload"
+             (change)="onFileSelected2()">
+        </div>
+
+
+    </div>
+
+
+    <div class="test" style='position: relative;'>
+
+        <pdf-viewer [src]='pdfSrc1' [show-all]="true" [autoresize]="true" [original-size]='true' [fit-to-page]='true' 
+        [render-text]='false' (page-rendered)="pageRendered2($event)"></pdf-viewer>
+    </div>
+
+</div>
+</div>
   <div class="row">
     <div class="col-md-12" style="text-align:center; margin:10px 0px">
       <button type="button" class="btn btn-success" (click)="onCompare()">
@@ -75,6 +120,7 @@
       </button>
     </div>
   </div>
+ 
   <div class="row">
     <div class="col-md-6 editor-size">
       <div class="input-title">
@@ -82,16 +128,16 @@
       </div>
       <textarea
         class="form-control"
-        rows="4"
+   
         id="editor1"
         [(ngModel)]="text1"
-      ></textarea>
-      <!--
-      <ngx-monaco-editor
+      >{{text1}}</textarea>
+      
+      <!-- <ngx-monaco-editor
         id="editor1"
         [options]="inputOptions"
         [(ngModel)]="text1"
-      ></ngx-monaco-editor>-->
+      ></ngx-monaco-editor> -->
     </div>
     <div class="col-md-6 editor-size">
       <div class="input-title">
@@ -99,10 +145,10 @@
       </div>
       <textarea
         class="form-control"
-        rows="4"
+      
         id="editor2"
         [(ngModel)]="text2"
-      ></textarea>
+      >{{text2}}</textarea>
       <!--
       <ngx-monaco-editor
         id="editor2"

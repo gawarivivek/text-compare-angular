@@ -3,13 +3,21 @@
   "compilerOptions": {
     "outDir": "../out-tsc/app",
     "baseUrl": "./",
-    "types": []
+    "types": ["node"]
   },
   "files": [
     "main.ts",
-    "polyfills.ts"
+    "polyfills.ts",
+    
   ],
+ 
   "include": [
-    "src/**/*.d.ts"
-  ]
+    "src/**/*.d.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
+    "index.md" // this
+  ],
 }
