@@ -15,7 +15,15 @@ import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { appRoutes } from './app.route';
 import * as PDFJS from "pdfjs-dist";
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { PdftextComponent } from './pdftext/pdftext.component';
+import { ToolbarModule } from '@syncfusion/ej2-angular-navigations';
 
+import { DialogModule } from '@syncfusion/ej2-angular-popups';
+import { LandingComponent } from './landing/landing.component';
+import { MultiselectComponent } from './multiselect/multiselect.component';
+import { SinglepdfcompareComponent } from './singlepdfcompare/singlepdfcompare.component';
+
+// import { PdfViewerModule } from '@syncfusion/ej2-angular-pdfviewer';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,12 +31,17 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     HeaderComponent,
     FooterComponent,
     CompareEditorComponent,
+    PdftextComponent,
+    LandingComponent,
+    MultiselectComponent,
+    SinglepdfcompareComponent,
     
   ],
   imports: [
     BrowserModule,
     FormsModule,
     PdfViewerModule,
+    ToolbarModule, DialogModule, 
     MonacoEditorModule.forRoot(),
     RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' })
   ],
