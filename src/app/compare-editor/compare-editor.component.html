@@ -1,6 +1,7 @@
 <div class="container-fluid container-diff">
 
     <hr />
+
     <div *ngIf="isCompared" class="row">
         <div class="col-md-11">
             <form class="form-inline " role="form">
@@ -34,68 +35,13 @@
     </button>
         </div>
     </div>
-    <div *ngIf="isCompared" class="row">
-        <div class="col-md-12 editor editor-size">
-            <ngx-monaco-diff-editor id="diffeditor" [options]="diffOptions" [originalModel]="originalModel" [modifiedModel]="modifiedModel"></ngx-monaco-diff-editor>
+    <div id="container" style="height: 100%">
+        <div *ngIf="isCompared" class="row">
+            <div class="col-md-12 editor editor-size">
+                <ngx-monaco-diff-editor id="diffeditor" [(ngModel)]="originalModel" [options]="diffOptions" [originalModel]="originalModel" (onInit)="onInitDiffEditor($event)" [modifiedModel]="modifiedModel"></ngx-monaco-diff-editor>
+            </div>
         </div>
     </div>
-
-    <!-- <div class="row"> -->
-    <!-- //omnamhshiway -->
-    <div class="row" style="max-width: fit-content;">
-        <div class="col" style="  max-width: 500px; ">
-            <label>First</label>
-            <div class="row choose">
-                <div class="input-group">
-                    <input type="file" class="form-control" id="file1" aria-describedby="inputGroupFileAddon05" aria-label="Upload" (change)="onFileSelected1()">
-
-                </div>
-
-                <div class="test" style='position: relative; max-height: 600px;  border-style: solid; 
-      scroll-behavior: auto; border-radius: 3px; border-color: brown;'>
-
-
-                    <pdf-viewer [src]='pdfSrc1' [show-all]="true" [autoresize]="true" [original-size]='true' [fit-to-page]='true' [render-text]='true' (page-rendered)="pageRendered1($event)"></pdf-viewer>
-
-                    <!-- <ejs-pdfviewer  #pdfViewer id="pdfViewer" [documentPath]='document' 
-         (extractTextCompleted)='extractTextCompleted($event)' [isExtractText]=true
-          style="height:640px;display:block"></ejs-pdfviewer> -->
-
-                </div>
-            </div>
-
-
-            <!-- <div class="test">
-      <pdf-viewer [src]="pdfSrc" [render-text]="true" style="width: 70px; height: 90px;"
-          [fit-to-page]='true'></pdf-viewer>
-  </div> -->
-
-        </div>
-        <!-- //omnamhshiway -->
-        <div class="col" style="max-width: 500px;">
-            <label>second</label>
-            <div class="row choose">
-                <div class="input-group">
-                    <input type="file" class="form-control" id="file2" aria-describedby="inputGroupFileAddon04" aria-label="Upload" (change)="onFileSelected2()">
-                </div>
-                <div class="test" style='position: relative; max-height: 600px;  border-style: solid; 
-      scroll-behavior: auto; border-radius: 3px; border-color: brown;'>
-
-                    <pdf-viewer [src]='pdfSrc2' [show-all]="true" [autoresize]="true" [original-size]='true' [fit-to-page]='true' [render-text]='true' (page-rendered)="pageRendered2($event)"></pdf-viewer>
-
-                    <!-- <ejs-pdfviewer #pdfViewer id="pdfViewer" [documentPath]='document' 
-      (extractTextCompleted)='extractTextCompleted($event)' [isExtractText]=true
-       style="height:640px;display:block"></ejs-pdfviewer> -->
-                </div>
-
-            </div>
-
-
-
-
-        </div>
-    </div>
-
     <div class="row">
         <div class="col-md-12" style="text-align:center; margin:10px 0px">
             <button type="button" class="btn btn-success" (click)="onCompare()">
@@ -103,18 +49,62 @@
     </button>
         </div>
     </div>
+    <!-- <div class="row"> -->
+    <!-- //omnamhshiway -->
+    <div class="row" style="max-width: fit-content;">
+        <div class="col" style="  max-width: 500px; min-width: 500px;">
+            <label>First</label>
+            <div class="row choose">
+                <div class="input-group">
+                    <input type="file" class="form-control" id="file1" aria-describedby="inputGroupFileAddon05" aria-label="Upload" (change)="onFileSelected1()">
+
+                </div>
+
+                <div class="test">
+
+
+                    <pdf-viewer #pdfViewer1 id="pdf1" [src]='pdfSrc1' [show-all]="true" [scrollTop]="true" [autoresize]="true" [original-size]='true' [fit-to-page]='true' (page-rendered)="pageRendered1($event)"></pdf-viewer>
+
+
+
+                </div>
+                <!-- <div class="test" style='position: relative; '>
+
+                    <pdf-viewer [src]='pdfSrc' [show-all]="true" [autoresize]="true" [original-size]='true' [fit-to-page]='true' [render-text]='false' (page-rendered)="pageRendered1($event)"></pdf-viewer> 
+                    <pdf-viewer [src]='pdfSrc1' [show-all]="true" [autoresize]="true" [original-size]='true' [fit-to-page]='true' [render-text]='true' (page-rendered)="pageRendered1($event)"></pdf-viewer>
+                </div> -->
+            </div>
+
+
+        </div>
+        <!-- //omnamhshiway -->
+        <div class="col" style="  max-width: 500px; min-width: 500px;">
+            <label>second</label>
+            <div class="row choose">
+                <div class="input-group">
+                    <input type="file" class="form-control" id="file2" aria-describedby="inputGroupFileAddon04" aria-label="Upload" (change)="onFileSelected2()">
+                </div>
+                <div class="test">
+
+                    <pdf-viewer #pdfViewer2 id="pdf2" [src]='pdfSrc2' [show-all]="true" [autoresize]="true" [original-size]='true' [fit-to-page]='true' (page-rendered)="pageRendered2($event)"></pdf-viewer>
+
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+
 
     <div class="row">
         <div class="col-md-6 editor-size">
             <div class="input-title">
                 <label>Text1</label>
             </div>
-            <!-- <textarea
-      class="form-control"
- 
-      id="editor1"
-      [(ngModel)]="text1"
-    >{{text1}}</textarea> -->
 
             <ngx-monaco-editor id="editor1" [options]="inputOptions" [(ngModel)]="text1"></ngx-monaco-editor>
 
@@ -124,12 +114,7 @@
             <div class="input-title">
                 <label>Text2</label>
             </div>
-            <!-- <textarea
-      class="form-control"
-    
-      id="editor2"
-      [(ngModel)]="text2"
-    >{{text2}}</textarea> -->
+
 
             <ngx-monaco-editor id="editor2" [options]="inputOptions" [(ngModel)]="text2"></ngx-monaco-editor>
 
@@ -139,3 +124,21 @@
 </div>
 <br />
 <br />
+<!-- <script>
+    function onCompare1() {
+
+
+        var originalModel1 = monaco.editor.createModel(this.originalModel, "text/plain");
+        var modifiedModel1 = monaco.editor.createModel(this.modifiedModel, "text/plain");
+
+
+        var diffEditor = monaco.editor.createDiffEditor(document.getElementById("container"));
+        diffEditor.setModel({
+            original: originalModel1,
+            modified: modifiedModel1
+        });
+
+        document.getElementById('editorProperties').innerHTML = diffEditor.getModel().modified.getValue();
+        console.log("sooooooooooooom", diffEditor.getModel().modified.getValue())
+    }
+</script> -->

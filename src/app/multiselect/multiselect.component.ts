@@ -11,8 +11,9 @@ export class MultiselectComponent implements OnInit {
   targetfiles: any;
   pdfSrc = "";
   pdfSrc1 = "";
-
-
+  thisIsAnObject;
+  sourcefilesresult: any;
+  targetfilesresult: any;
   // pdfComponent: any;
 
 
@@ -81,17 +82,28 @@ export class MultiselectComponent implements OnInit {
   onFolderSourceSelected(event: any) {
     if (event.target.files.length > 0) {
       this.sourcefiles = event.target.files;
+      this.sourcefilesresult = event.target.result;
       console.log(this.sourcefiles);
     }
   }
 
   onCompare() {
-    const url = this.router.serializeUrl(this.router.createUrlTree(['/Single_select_Component']));
+    this.sourcefiles[0];
+    // this.sourcefilesresult[0];
+    //   this.thisIsAnObject = this.sourcefiles[0];
+    // sessionStorage.setItem(this.sourcefiles[0], 'sourcefiles');
+    // sessionStorage.setItem(this.sourcefiles[0], 'sourcefilesresult');
+    const url = this.router.serializeUrl(this.router.createUrlTree(['/Single_multi_Component']));
+    window.open(url, '_blank');  
+      window.open(url, '_blank');
     window.open(url, '_blank');
     window.open(url, '_blank');
-    window.open(url, '_blank');
-    window.open(url, '_blank');
+    //  window.opener.thisIsAnObject =  this.sourcefiles[0];
+    //  window.MyNamespace = window.MyNamespace || {};
   }
 
   
+}
+declare global {
+  interface Window { MyNamespace: any; }
 }

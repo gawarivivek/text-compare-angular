@@ -22,6 +22,7 @@ import { DialogModule } from '@syncfusion/ej2-angular-popups';
 import { LandingComponent } from './landing/landing.component';
 import { MultiselectComponent } from './multiselect/multiselect.component';
 import { SinglepdfcompareComponent } from './singlepdfcompare/singlepdfcompare.component';
+import { DatalayerService } from './datalayer.service';
 
 // import { PdfViewerModule } from '@syncfusion/ej2-angular-pdfviewer';
 @NgModule({
@@ -42,10 +43,11 @@ import { SinglepdfcompareComponent } from './singlepdfcompare/singlepdfcompare.c
     FormsModule,
     PdfViewerModule,
     ToolbarModule, DialogModule, 
+    
     MonacoEditorModule.forRoot(),
     RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' })
   ],
-  providers: [],
+  providers: [DatalayerService],
   exports:[
     PdfViewerModule
   ],

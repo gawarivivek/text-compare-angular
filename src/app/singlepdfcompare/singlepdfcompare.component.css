@@ -28,3 +28,69 @@
 .input-title label {
     margin-top: 6px;
 }
+
+
+/* //// */
+
+.test {
+    height: 800px;
+    width: 100%;
+    margin-top: 10px;
+    background: white;
+}
+
+.row {
+    max-width: 100%;
+    max-height: fit-content;
+}
+
+.title {
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    background-color: rgb(177, 208, 236);
+    font-family: "Trirong", serif;
+}
+
+h1 {
+    align-items: center;
+    max-width: 100%;
+    font-family: "Trirong", serif;
+}
+
+.selectcol {
+    background: chocolate;
+}
+
+.selection {}
+
+.col {
+    margin: 5px;
+    background: lightgray;
+}
+
+.choose {
+    margin-top: 5px;
+    padding: 10px 10px 10px 0px;
+}
+
+.compare {
+    padding: 10px;
+    margin-top: 10px;
+    background: darkseagreen;
+    text-decoration-color: white;
+}
+
+pdf-viewer {
+    width: 50px;
+    height: 50px;
+}
+
+.ng2-pdf-viewer-container {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}

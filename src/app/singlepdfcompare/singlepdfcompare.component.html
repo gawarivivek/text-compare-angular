@@ -39,11 +39,17 @@
             <ngx-monaco-diff-editor id="diffeditor" [options]="diffOptions" [originalModel]="originalModel" [modifiedModel]="modifiedModel"></ngx-monaco-diff-editor>
         </div>
     </div>
-
+    <div class="row">
+        <div class="col-md-12" style="text-align:center; margin:10px 0px">
+            <button type="button" class="btn btn-success" (click)="onCompare()">
+      Compare
+    </button>
+        </div>
+    </div>
     <!-- <div class="row"> -->
     <!-- //omnamhshiway -->
     <div class="row" style="max-width: fit-content;">
-        <div class="col" style="  max-width: 500px; ">
+        <div class="col" style="max-width: 600px; min-width: 600px; ">
             <label>First</label>
             <div class="row choose">
                 <div class="input-group">
@@ -72,7 +78,7 @@
 
         </div>
         <!-- //omnamhshiway -->
-        <div class="col" style="max-width: 500px;">
+        <div class="col" style="max-width: 600px; min-width: 600px; ">
             <label>second</label>
             <div class="row choose">
                 <div class="input-group">
@@ -96,25 +102,13 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-12" style="text-align:center; margin:10px 0px">
-            <button type="button" class="btn btn-success" (click)="onCompare()">
-      Compare
-    </button>
-        </div>
-    </div>
 
-    <div class="row">
+
+    <!-- <div class="row">
         <div class="col-md-6 editor-size">
             <div class="input-title">
                 <label>Text1</label>
             </div>
-            <!-- <textarea
-      class="form-control"
- 
-      id="editor1"
-      [(ngModel)]="text1"
-    >{{text1}}</textarea> -->
 
             <ngx-monaco-editor id="editor1" [options]="inputOptions" [(ngModel)]="text1"></ngx-monaco-editor>
 
@@ -124,18 +118,13 @@
             <div class="input-title">
                 <label>Text2</label>
             </div>
-            <!-- <textarea
-      class="form-control"
-    
-      id="editor2"
-      [(ngModel)]="text2"
-    >{{text2}}</textarea> -->
+
 
             <ngx-monaco-editor id="editor2" [options]="inputOptions" [(ngModel)]="text2"></ngx-monaco-editor>
 
 
         </div>
-    </div>
+    </div> -->
 </div>
 <br />
 <br />

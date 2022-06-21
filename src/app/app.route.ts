@@ -16,7 +16,7 @@ export const appRoutes: Routes = [
 
 
   { path: '', component: LandingComponent },
-  { path: 'Single_select_Component', component: SinglepdfcompareComponent },
-  // { path: 'Single_select_Component', component: CompareEditorComponent },
+   { path: 'Single_multi_Component', component: SinglepdfcompareComponent },
+  { path: 'Single_select_Component', component: CompareEditorComponent },
   { path: 'Multi_select_Component', component: MultiselectComponent },
 ];

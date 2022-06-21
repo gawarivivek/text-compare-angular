@@ -13,8 +13,9 @@ import { DiffEditorModel } from 'ngx-monaco-editor';
 
 import * as pdfjsLib from 'pdfjs-dist';
 import { PdfViewerComponent } from 'ng2-pdf-viewer';
-
-
+import { DatalayerService } from '../datalayer.service';
+const PDF = require('pdfjs-dist');
+PDF.GlobalWorkerOptions.workerSrc = require('pdfjs-dist/build/pdf.worker.entry')
 @Component({
   selector: 'widget-compare-editor',
   styleUrls: ['./singlepdfcompare.component.css'],
@@ -129,8 +130,21 @@ export class SinglepdfcompareComponent implements OnInit {
   pdfSrc: any;
   pdfToText: (data: any, callbackPageDone: any, callbackAllDone: any) => void;
   public document: string = 'C:\Users\V884693\Desktop\PdfCompa1.pdf';
+  public datalayer ;
+  constructor( datalayer1:DatalayerService){
+    this.datalayer = datalayer1;
+  }
+
   public ngOnInit() {
+    window.addEventListener('message', function(event) {
+      var myVariable = window.opener.thisIsAnObject;
+      // if(event.srcElement.location.href==window.location.href){
+      // /* do what you want with event.data */
+      // }
+  }); 
     // this.yourMethodName('src/assets/documents/om.pdf');
+    this.onFileSelected1();
+    // this.onFileSelected2();
   }
 
   onChangeLanguage(language) {
@@ -156,7 +170,7 @@ export class SinglepdfcompareComponent implements OnInit {
   }
 
   onCompare() {
-
+    this.datalayer;
     var mytext1 = localStorage.getItem('pdf1');
     this.text1 = mytext1;
     var mytext2 = localStorage.getItem('pdf2');
@@ -233,6 +247,7 @@ export class SinglepdfcompareComponent implements OnInit {
                       code: this.text1
                     });
                     localStorage.setItem('pdf1', this.full_text);
+                   this.datalayer.pdf1Text = "sonali1";
                   }
 
                 //   callbackAllDone(full_text);
@@ -242,7 +257,7 @@ export class SinglepdfcompareComponent implements OnInit {
         }); // end of page.then
       } // of for
     });
-    this.text1 = this.full_text;
+    // this.text1 = this.full_text;
     // this.text2 = this.full_text;
     // if (pdfnum === 'one') {
     //   this.originalModel = Object.assign({}, this.originalModel, {
@@ -311,6 +326,8 @@ export class SinglepdfcompareComponent implements OnInit {
                       code: this.text2
                     });
                     localStorage.setItem('pdf2', this.full_text2);
+                    // this.datalayer.pdf2Text = this.full_text;
+                    this.datalayer.pdf2Text = "sonali2";
                   }
 
                 //   callbackAllDone(full_text);
@@ -337,11 +354,11 @@ export class SinglepdfcompareComponent implements OnInit {
   }; // end of pdfToText()
 
   pageRendered1(e: CustomEvent) {
-   
+
     this.pdfToText1(this.pdfSrc1, 1, 0, 22, 'one');
   }
   pageRendered2(e: CustomEvent) {
-    
+
     this.pdfToText2(this.pdfSrc2, 1, 0, 22, 'two');
   }
 
@@ -364,7 +381,7 @@ export class SinglepdfcompareComponent implements OnInit {
     });
 
   }
- 
+
 
   onFileSelected2() {
     let $img: any = document.querySelector('#file2');
@@ -379,53 +396,26 @@ export class SinglepdfcompareComponent implements OnInit {
     }
 
   }
+  
   onFileSelected1() {
-    const $pdf: any = document.querySelector('#file1');
+    var myVariable = window.opener.thisIsAnObject;
+    const $pdf1: any =sessionStorage.getItem('sourcefiles');
+    this.pdfSrc1
+    this.pdfSrc1 = $pdf1;
+    // const $pdf2: any= localStorage.getItem('sourcefilesresult');
+     const $pdf: any = document.querySelector('#file1');
     if (typeof FileReader !== 'undefined') {
       const reader = new FileReader();
       reader.onload = (e: any) => {
         this.pdfSrc1 = e.target.result;
       };
-      reader.readAsArrayBuffer($pdf.files[0]);
+      // reader.readAsArrayBuffer($pdf1.files[0]);
       // $pdf.filePath
-    
+
     }
-
+    // this.pdfSrc1 = $pdf2;
+    // this.reader.readAsArrayBuffer($pdf1);
   }
-
- 
-
-  gettext(pdfUrl) {
-    var pdf = pdfjsLib.getDocument(pdfUrl);
-    return pdf.then(function (pdf) { // get all pages text
-      var maxPages = pdf.pdfInfo.numPages;
-      var countPromises = []; // collecting all page promises
-      for (var j = 1; j <= maxPages; j++) {
-        var page = pdf.getPage(j);
-
-        var txt = "";
-        countPromises.push(page.then(function (page) { // add page promise
-          var textContent = page.getTextContent();
-          return textContent.then(function (text) { // return content promise
-            return text.items.map(function (s) { return s.str; }).join(''); // value page text 
-          });
-        }));
-      }
-      // Wait for all pages and join text
-      return Promise.all(countPromises).then(function (texts) {
-        return texts.join('');
-      });
-    });
-  }
-
-
-
-
-
-
-
-
-
 
 
 }
